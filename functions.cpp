@@ -59,45 +59,27 @@ void draw(int seg[40][20]){
     {
         for (int j = 0; j<20; j++)
         {
-            if (seg[i][j] == 1)
-                cout << char(219);
-            else cout << " ";
+        	switch(seg[i][j])
+        	{
+        		case 1: cout<<char(219);
+        				break;
+        		case 2: cout<<"A";
+        				break;
+        		case 3: cout<<"B";
+        				break;
+        		default: cout<<" ";
+        	}
         }
         cout << std::endl;
     }
 }
-/*
-void drawSegment(char S){
-    switch (S)
-    {
-        case 'A': std::cout<<"Drawing segment "<<S<<std::endl;
-        draw(segment_A);
-        break;
-        case 'B': std::cout<<"Drawing segment "<<S<<std::endl;
-        draw(segment_B);
-        break;
-        case 'C': std::cout<<"Drawing segment "<<S<<std::endl;
-        draw(segment_C);
-        break;
-        case 'D': std::cout<<"Drawing segment "<<S<<std::endl;
-        draw(segment_D);
-        break;
-        case 'E': std::cout<<"Drawing segment "<<S<<std::endl;
-        draw(segment_E);
-        break;
-        case 'F': std::cout<<"Drawing segment "<<S<<std::endl;
-        draw(segment_F);
-        break;
-        default: std::cout<<"Unknown char";
-    }
-}
-*/
+
 void generateMap(int mapa[40][20])
 {
-    int segment[5][5], mapa_segmenty_extended[40][4];
+    int segment[5][5];
     int w = 0, k = 0;
 
-    //Generuj mapꡳegment󷍊    printf("____________________________UPROSZCZONA MAPA____________________________\n");
+    //Generuj mape segmentow
     char mapa_segmenty[8][4];
     for (int i = 0; i<8; i++)
     {
@@ -109,7 +91,8 @@ void generateMap(int mapa[40][20])
         cout << std::endl;
     }
 
-    //Rozwi񠭡pꡳegment󷍊    char mapa_segmenty_extended[40][4];
+    //Rozwi�mape segmentow
+    char mapa_segmenty_extended[40][4];
     for (int i = 0; i < 8; i++)
     {
         for (int j = 0; j < 4; j++)
@@ -122,7 +105,7 @@ void generateMap(int mapa[40][20])
         }
     }
 
-    //Generuj du߹ map꡺ mapy segment󷍊    printf("____________________________DUЁ MAPA____________________________\n");
+    //Generuj duza mape
     for (int i = 0; i<40; i++)
     {
         for (int j = 0; j<4; j++)
@@ -176,4 +159,25 @@ void generateMap(int mapa[40][20])
             }
         }
     }
+    
+    //Wylosuj punkt startowy i ko�cowy
+    int a=(rand() % 20), b=(rand() % 40), c=(rand() % 40),d=(rand() % 20);
+	while (mapa[a][b]!=0)
+	{
+		a=(rand() % 40);
+		b=(rand() % 20);
+	}
+	
+	mapa[a][b] = 2;
+
+	while (mapa[c][d]!=0)
+	{
+		c=(rand() % 40);
+		d=(rand() % 20);
+	}
+
+	mapa[c][d] = 3;
+	
+	cout << endl << "Wylosowane punkty: " << endl << "A=" << a << ":" << b << endl << "B=" << c << ":" << d << endl << endl;
+	
 }

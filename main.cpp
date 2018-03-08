@@ -1,6 +1,6 @@
 #include <iostream>
 #include <iomanip>
-#include <stdlib.h> //Necessary to use rand
+#include <stdlib.h> //rand
 #include <ctime>
 #include "functions.h"
 
@@ -8,42 +8,43 @@ using namespace std;
 
 // Zmienne globalne
 
-int n;                   // Liczba wierzchołków
-char ** A;               // Macierz sąsiedztwa
+int n;                   // Liczba wierzcholkow
+char ** A;               // Macierz sasiedztwa
 bool * visited;          // Tablica odwiedzin
 int mapa[40][20] = {};
 
 // **********************
-// *** PROGRAM GŁÓWNY ***
+// *** PROGRAM GLOWNY ***
 // **********************
 
 int main()
 {
-    srand(time(NULL)); //To randomize rand
-    int m, i, j, v1, v2;
+    srand(time(NULL));
     
     generateMap(mapa);
     draw(mapa);
-
+    
     system("PAUSE");
-
-    int n = 25;                    // Liczba wszystkich kwadratów                   
-    int lw = 11;                   // Liczba białych pól
-    A = new char *[n];    // Tworzymy tablicę wskaźników
-    visited = new bool[n]; // Tworzymy tablicę odwiedzin
+	
+	int m, i, j, v1, v2;
+    
+	int n = 25;                    // Liczba wszystkich kwadratów                   
+    int lw = 11;                   // Liczba bialych pol
+    A = new char *[n];    // Tworzymy tablice wskaznikow
+    visited = new bool[n]; // Tworzymy tablice odwiedzin
 
     for (i = 0; i < n; i++)
         A[i] = new char[n];  // Tworzymy wiersze
 
-    // Macierz wypełniamy zerami
+    // Macierz wypelniamy zerami
 
     for (i = 0; i < n; i++)
     {
-        visited[i] = true;  // Wypełniamy tablicę odwiedzin
+        visited[i] = true;  // Wypelniamy tablice odwiedzin
         for (j = 0; j < n; j++) A[i][j] = 0;
     }
 
-    // Odczytujemy kolejne definicje krawędzi
+    // Odczytujemy kolejne definicje krawedzi
     //  visited[2]=false;
     //  visited[4]=false;
     //  visited[5]=false;
